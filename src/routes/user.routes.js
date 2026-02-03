@@ -13,7 +13,7 @@ import {  registerUser,
     resendForgotPasswordOtp,
     getAllUsers, } from "../controllers/user.controller.js";
 
-import { verifyJWT } from "../middlewares/auth.middleware.js";
+import { verifyJWT,isAdmin } from "../middlewares/auth.middleware.js";
 
 const router = Router()
 

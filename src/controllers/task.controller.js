@@ -1,11 +1,10 @@
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiError } from "../utils/ApiError.js";
-import { Task } from "../models/task.model.js";
+import { Task } from "../models/task.model.js"; // Double-check this file exists!
 import { ApiResponse } from "../utils/ApiResponse.js";
 
 const createTask = asyncHandler(async (req, res) => {
     const { title, description } = req.body;
-
     if (!title) throw new ApiError(400, "Title is required");
 
     const task = await Task.create({
@@ -19,14 +18,14 @@ const createTask = asyncHandler(async (req, res) => {
     );
 });
 
-
-const getAllTasks = asyncHandler(async (req, res) => {
+const getUserTasks = asyncHandler(async (req, res) => {
     const tasks = await Task.find({ owner: req.user._id });
 
     return res.status(200).json(
         new ApiResponse(200, tasks, "Tasks fetched successfully")
     );
 });
+
 const updateTask = asyncHandler(async (req, res) => {
     const { taskId } = req.params;
     const { title, description, status } = req.body;
@@ -55,6 +54,7 @@ const deleteTask = asyncHandler(async (req, res) => {
         new ApiResponse(200, {}, "Task deleted successfully")
     );
 });
+
 const adminGetAllTasks = asyncHandler(async (req, res) => {
     const tasks = await Task.find({}).populate("owner", "username email");
 
@@ -63,4 +63,4 @@ const adminGetAllTasks = asyncHandler(async (req, res) => {
     );
 });
 
-export { createTask, getAllTasks, updateTask, deleteTask , adminGetAllTasks};
+export { createTask, getUserTasks, updateTask, deleteTask, adminGetAllTasks };
