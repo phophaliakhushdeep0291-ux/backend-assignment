@@ -25,18 +25,8 @@ const generateAccessAndRefreshTokens= async(userId)=>{
 }
 
 const registerUser= asyncHandler(async(req,res)=>{
-    //get user details from frontend
-    //validation -not empty
-    //check if user already exists: username,email
-    //check for images ,check for avatar
-    //upload them to cloudinary, avatar
-    //create user object - create entry in dp
-    //remove password and refresh token field from response
-    //check for user creation 
-    //return responce
-    const {fullname,email,username,password}=req.body
-    // console.log("email :",email);
     
+    const {fullname,email,username,password,role}=req.body
     if([fullname,email,username,password].some((field)=>field?.trim()==="")
     ){
         throw new ApiError(400,"All field are required")
@@ -55,6 +45,7 @@ const registerUser= asyncHandler(async(req,res)=>{
         email,
         password,
         username: username.toLowerCase(),
+        role:role || "user",
         isEmailVerified:false
     })
     const verificationToken=user.generateEmailVerificationToken();
@@ -425,6 +416,13 @@ const resendForgotPasswordOtp = asyncHandler(async (req, res) => {
     res.status(200).json(new ApiResponse(200, {}, "OTP resent successfully"));
 });
 
+const getAllUsers = asyncHandler(async (req, res) => {
+    const users = await User.find({}).select("-password -RefreshToken");
+    
+    return res.status(200).json(
+        new ApiResponse(200, users, "All users fetched successfully by Admin")
+    );
+});
 export {
     registerUser,
     loginUser,
@@ -438,4 +436,5 @@ export {
     resetPasswordWithOtp,
     forgotPassword,
     resendForgotPasswordOtp,
+    getAllUsers,
 }

@@ -10,7 +10,8 @@ import {  registerUser,
     resendEmailVerification,
     resetPasswordWithOtp,
     forgotPassword,
-    resendForgotPasswordOtp,} from "../controllers/user.controller.js";
+    resendForgotPasswordOtp,
+    getAllUsers, } from "../controllers/user.controller.js";
 
 import { verifyJWT } from "../middlewares/auth.middleware.js";
 
@@ -33,6 +34,6 @@ router.route("/me").get(verifyJWT,getCurrentUser)
 router.route("/forgot-password").post(forgotPassword)
 router.route("/reset-password").patch(resetPasswordWithOtp)
 router.route("/resend-otp").post(resendForgotPasswordOtp)
-
+router.route("/admin/all-users").get(verifyJWT, isAdmin, getAllUsers)
 
 export default router
