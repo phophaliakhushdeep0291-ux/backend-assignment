@@ -1,0 +1,246 @@
+{
+  "info": {
+    "_postman_id": "81f9ea87-9387-4164-aa4d-2c570087978f",
+    "name": "registration backend",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "user",
+      "item": [
+        {
+          "name": "register",
+          "id": "5e2922b4-cdfd-468d-bec1-30600158b63d",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "fullname",
+                  "value": "one",
+                  "type": "text"
+                },
+                {
+                  "key": "email",
+                  "value": "one@gmail.com",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "12345678",
+                  "type": "text"
+                },
+                {
+                  "key": "username",
+                  "value": "one",
+                  "type": "text"
+                },
+                {
+                  "key": "avatar",
+                  "type": "file",
+                  "src": "/C:/Users/phoph/Pictures/MSI Wallpaper/MSI_MEG_GODLIKE.jpg"
+                },
+                {
+                  "key": "coverImage",
+                  "type": "file",
+                  "src": "/C:/Users/phoph/Pictures/MSI Wallpaper/MSI_MEG_ACE.jpg"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{server}}/users/register",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "users",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "login",
+          "id": "c3a21f64-870b-4fb8-952f-2b3f8da42f17",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\":\"one@gmail.com\",\r\n    \"password\": \"12345678\"\r\n}"
+            },
+            "url": {
+              "raw": "{{server}}/users/login",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "users",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "logout",
+          "id": "8def3da7-337c-42d3-9176-fde4895cdf6d",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{server}}/users/logout",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "users",
+                "logout"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "refreshtoken",
+          "id": "db7d147e-03a3-4009-a300-66c4c240e6d2",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{server}}/users/refresh-token",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "users",
+                "refresh-token"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "emailverification",
+          "id": "105d3c1f-0f1d-435f-bcbc-5da45f9d142b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "fullname",
+                  "value": "one",
+                  "type": "text"
+                },
+                {
+                  "key": "email",
+                  "value": "one@gmail.com",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "12345678",
+                  "type": "text"
+                },
+                {
+                  "key": "username",
+                  "value": "one",
+                  "type": "text"
+                },
+                {
+                  "key": "avatar",
+                  "type": "file",
+                  "src": "/C:/Users/phoph/Pictures/MSI Wallpaper/MSI_MEG_GODLIKE.jpg"
+                },
+                {
+                  "key": "coverImage",
+                  "type": "file",
+                  "src": "/C:/Users/phoph/Pictures/MSI Wallpaper/MSI_MEG_ACE.jpg"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{server}}/users/verify-email/LONG_TOKEN",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "users",
+                "verify-email",
+                "LONG_TOKEN"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Task",
+          "id": "a5c19a09-3be0-4084-8adf-69fd7fc9723c",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"title\": \"My First Task\", \"description\": \"Building the backend was a success!\" }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/v1/tasks/",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v1",
+                "tasks",
+                ""
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "id": "cdf5fcd0-a5db-4799-9a62-bdf8458e32a1"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "info": {
+    "_postman_id": "a8d84431-25d1-4dd9-8e6e-de5c9e412efb",
+    "name": "API Testing Collection",
+    "description": "A basic collection ready for API testing",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": []
+}
